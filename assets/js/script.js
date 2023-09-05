@@ -9,6 +9,8 @@ var todayWeatherTemp = $("#today-weather-temp");
 var todayWeatherWind = $("#today-weather-wind");
 var todayWeatherHumid = $("#today-weather-humidity");
 
+
+
 var apiKey = "fd14e40bfd6c1460a77a88f01383cf1e";
 var dailyURL =
   "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
