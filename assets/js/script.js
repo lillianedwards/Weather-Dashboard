@@ -30,23 +30,26 @@ function currentWeather(city) {
     var temp = data.main.temp;
     var wind = data.wind.speed;
     var humidity = data.main.humidity;
+
+
+    //appending the current city here for daily
+
     todayWeatherCityName.text(name);
-    //appending the current city here for daily 
+    todayWeatherTemp.text(temp);
+    todayWeatherWind.text(wind);
+    todayWeatherHumid.text(humidity);
   });
 }
-
-
 
 citySearchBtn.on("click", getCurrentWeather);
 
 function upcomingWeather(city) {
-    $.ajax({
-        url:requestURL + userInput.val() + "&appid=" + apikey,
-        method: "GET"
-        })
-        .then(function(data) {
-        console.log(data);
-        })
+  $.ajax({
+    url: requestURL + userInput.val() + "&appid=" + apikey,
+    method: "GET",
+  }).then(function (data) {
+    console.log(data);
+  });
 }
 
 // Card Template
