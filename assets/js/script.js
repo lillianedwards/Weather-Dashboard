@@ -1,6 +1,6 @@
 //VARIABLE DECLARATIONS
 var citySearchBox = $("#city-search");
-var userInput = $("#user-city");
+var userInput = $("#user-City");
 var citySearchBtn = $("#search-button");
 
 var todayWeatherCityName = $("#today-weather-city-name");
@@ -9,51 +9,47 @@ var todayWeatherTemp = $("#today-weather-temp");
 var todayWeatherWind = $("#today-weather-wind");
 var todayWeatherHumid = $("#today-weather-humidity");
 
-var apiKey = $("27918b0a1eff4c123d61cdad98ffa668");
-var apiURL = 
+var apiKey = "fd14e40bfd6c1460a77a88f01383cf1e";
+var dailyURL =
+  "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
+var weeklyUrl;
 
-function getCurrentWeather (event) {
+function getCurrentWeather(event) {
+  event.preventDefault();
+  currentWeather(userInput.val());
+}
 
-    event.preventDefault();
-    var requestURL = "https://api.openweathermap.org/data/2.5/weather?appid=$apiKey&units=imperial&q=`;"
-
-$.ajax({
-url:requestURL + userInput.val(),
-method: "GET"
-})
-.then(function(data) {
-console.log(data);
-
-
-
-
-})}
-
-
-
-
-
-
-
-
+function currentWeather(city) {
+  $.ajax({
+    url: dailyURL + city + "&appid=" + apiKey,
+    method: "GET",
+  }).then(function (data) {
+    console.log(data);
+    var name = data.name;
+    var icon = data.weather[0].icon;
+    var temp = data.main.temp;
+    var wind = data.wind.speed;
+    var humidity = data.main.humidity;
+    
+    //appending the current city here for daily 
+  });
+}
 
 
 
+citySearchBtn.on("click", getCurrentWeather);
 
+function upcomingWeather(city) {
+    $.ajax({
+        url:requestURL + userInput.val() + "&appid=" + apikey,
+        method: "GET"
+        })
+        .then(function(data) {
+        console.log(data);
+        })
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-// Card Template 
+// Card Template
 //      <div class="card">
 //           <img src="..." class="card-img-top" alt="...">
 //           <div class="card-body">
@@ -62,8 +58,6 @@ console.log(data);
 //             <p class="card-text">.</p>
 //             <p class="card-text">.</p>
 //           </div>
-//        </div> 
-
-
+//        </div>
 
 //use the .empty method to clear out the cards
