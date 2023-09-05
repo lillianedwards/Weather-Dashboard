@@ -31,6 +31,7 @@ function currentWeather(city) {
     var wind = data.wind.speed;
     var humidity = data.main.humidity;
 
+
     //appending the current city here for daily
 
     todayWeatherCityName.text(name);
