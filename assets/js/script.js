@@ -86,6 +86,17 @@ function upcomingWeather(city) {
         "https://openweathermap.org/img/wn/" + iconName + ".png"
       );
       card.append(forecastIcon);
+      card.append(cardBody);
+      date.text(dayjs(value.dt_txt).format("dddd, MMMM D"));
+      cardBody.append(date);
+      forecastTemp.text("Temp: " + value.main.temp + "°");
+      cardBody.append(forecastTemp);
+      forecastWind.text("Wind Speed: " + value.wind.speed);
+      cardBody.append(forecastWind);
+      forecastHumid.text("Humidity: " + value.main.humidity + "%");
+      cardBody.append(forecastHumid);
+
+      
     });
   });
 }
