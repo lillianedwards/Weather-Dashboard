@@ -22,7 +22,9 @@ renderCityMenu();
 
 function getCurrentWeather(event) {
   event.preventDefault();
-  savedCities.push(userInput.val());
+  if (!savedCities.includes(userInput.val())) {
+    savedCities.push(userInput.val());
+  }
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
   renderCityMenu();
   currentWeather(userInput.val());
