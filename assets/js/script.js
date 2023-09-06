@@ -46,10 +46,10 @@ function currentWeather(city) {
 
     //appending the current city here for daily
 
-    todayWeatherCityName.text(name);
-    todayWeatherTemp.text(temp);
-    todayWeatherWind.text(wind);
-    todayWeatherHumid.text(humidity);
+    todayWeatherCityName.text("City = " + name);
+    todayWeatherTemp.text("Tempature = " + temp + "°");
+    todayWeatherWind.text("Is it windy today? = " + wind + "MPH");
+    todayWeatherHumid.text("Humidty = " + humidity);
     todayWeatherIcon.attr(
       "src",
       "https://openweathermap.org/img/wn/" + icon + ".png"
