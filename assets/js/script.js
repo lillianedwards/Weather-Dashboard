@@ -50,6 +50,11 @@ function currentWeather(city) {
     todayWeatherTemp.text(temp);
     todayWeatherWind.text(wind);
     todayWeatherHumid.text(humidity);
+    todayWeatherIcon.attr(
+      "src",
+      "https://openweathermap.org/img/wn/" + icon + ".png"
+    );
+    cWIcon.append(todayWeatherIcon);
   });
 }
 
