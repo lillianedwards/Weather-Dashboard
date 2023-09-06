@@ -89,9 +89,14 @@ function upcomingWeather(city) {
       );
       card.append(forecastIcon);
       card.append(cardBody);
-      date.text(dayjs(value.dt_txt.split()[0]));
+      date.text(dayjs(value.dt_txt).format("dddd, MMMM D"));
       cardBody.append(date);
-      forecastTemp.text(value.)
+      forecastTemp.text("Temp: " + value.main.temp + "°");
+      cardBody.append(forecastTemp);
+      forecastWind.text("Wind Speed: " + value.wind.speed);
+      cardBody.append(forecastWind);
+
+      
     });
   });
 }
