@@ -1,0 +1,25 @@
+/* CSS VARIABLES */
+:root {
+  --liver: #6b4b3e;
+  --lapis: #1f5673;
+  --airSuperiorityBlue: #759fbc;
+  --lightBlue: #90c3c8;
+  --white: #fff;
+  --black: #0a0a0a;
+}
+
+.container-fluid {
+  background-color: var(--airSuperiorityBlue);
+  padding: 20px;
+}
+
+.navbar {
+  padding: 0px;
+}
+
+.btn-outline-success {
+  color: var(--liver);
+  --bs-btn-border-color: var(--black);
+}
+
+
