@@ -98,10 +98,6 @@ function upcomingWeather(city) {
     });
   });
 }
-// upcomingWeather("");
-// Card Template
-
-//use the .empty method to clear out the cards
 
 function renderCityMenu() {
   cityDropdownEl.empty();
