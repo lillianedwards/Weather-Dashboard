@@ -22,4 +22,7 @@
   --bs-btn-border-color: var(--black);
 }
 
-
+#today-weather-icon {
+  width: 50%;
+  height: 90%;
+}
