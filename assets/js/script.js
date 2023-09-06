@@ -11,7 +11,6 @@ var todayWeatherWind = $("#today-weather-wind");
 var todayWeatherHumid = $("#today-weather-humidity");
 var forecastContainer = $("#forecast-contain");
 
-
 var apiKey = "fd14e40bfd6c1460a77a88f01383cf1e";
 var dailyURL =
   "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
@@ -54,33 +53,33 @@ function currentWeather(city) {
 citySearchBtn.on("click", getCurrentWeather);
 
 function upcomingWeather(city) {
+  forecastContainer.empty();
   $.ajax({
     url: weeklyUrl + city + "&appid=" + apiKey,
     method: "GET",
   }).then(function (data) {
     console.log(data);
-    data.list.forEach ((value) => {
+    data.list.forEach((value) => {
       if (!value.dt_txt.includes("15:00:00")) {
         return;
       }
 
       var card = $('<div class="card">');
       var forecastIcon = $('<img class ="card-img-top" alt="weather icon">');
-      var cardBody = $('<div class="card-body">')
-      var date = $('<h5 class="card-title">')
+      var cardBody = $('<div class="card-body">');
+      var date = $('<h5 class="card-title">');
       var forecastTemp = $('<p class="card-text">');
       var forecastWind = $('<p class="card-text">');
       var forecastHumid = $('<p class="card-text">');
       var iconName = value.weather[0].icon;
-      
-      forecastContainer.append(card);
-      forecastIcon.attr("src","https://openweathermap.org/img/wn/" + iconName + ".png")
-      card.append(forecastIcon);
-      card.append(cardBody);
-      date.text(value.dt_text);
-      
 
-    })
+      forecastContainer.append(card);
+      forecastIcon.attr(
+        "src",
+        "https://openweathermap.org/img/wn/" + iconName + ".png"
+      );
+      card.append(forecastIcon);
+    });
   });
 }
 upcomingWeather("Duluth");
