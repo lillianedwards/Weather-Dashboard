@@ -53,24 +53,28 @@ function upcomingWeather(city) {
     method: "GET",
   }).then(function (data) {
     console.log(data);
-    for (let i = 0; i < 5; i++) {
-      var date = 
-      // var card = `
-      // <div class="card">
-      //      <img src="..." class="card-img-top" alt="...">
-      //      <div class="card-body">
-      //        <h5 class="card-title">${}</h5>
-      //        <p class="card-text">.</p>
-      //        <p class="card-text">.</p>
-      //        <p class="card-text">.</p>
-      //      </div>
-      //   </div>
+    data.list.forEach ((value) => {
+      if (!value.dt_txt.includes("15:00:00")) {
+        return;
+      }
+
+      var card = $('<div class="card">');
+      var forecastIcon = $('<img class ="card-img-top" alt="weather icon">');
+      var cardBody = $('<div class="card-body">')
+      var date = $('<h5 class="card-title">')
+      var forecastTemp = $('<p class="card-text">');
+      var forecastWind = $('<p class="card-text">');
+      var forecastHumid = $('<p class="card-text">');
+      var iconName = value.weather[0].icon;
       
-      // `
-    }
+      forecastContainer.append(card);
+      forecastIcon.attr("src","https://openweathermap.org/img/wn/" + iconName + ".png")
+      card.append(forecastIcon);
+
+    })
   });
 }
-upcomingWeather();
+upcomingWeather("Duluth");
 // Card Template
 
 //use the .empty method to clear out the cards
