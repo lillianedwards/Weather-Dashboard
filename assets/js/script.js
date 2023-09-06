@@ -8,7 +8,7 @@ var todayWeatherIcon = $("today-weather-icon");
 var todayWeatherTemp = $("#today-weather-temp");
 var todayWeatherWind = $("#today-weather-wind");
 var todayWeatherHumid = $("#today-weather-humidity");
-
+var forecastContainer = $("#forecast-contain");
 
 
 var apiKey = "fd14e40bfd6c1460a77a88f01383cf1e";
@@ -20,6 +20,7 @@ var weeklyUrl =
 function getCurrentWeather(event) {
   event.preventDefault();
   currentWeather(userInput.val());
+  upcomingWeather(userInput.val());
 }
 
 function currentWeather(city) {
@@ -48,22 +49,28 @@ citySearchBtn.on("click", getCurrentWeather);
 
 function upcomingWeather(city) {
   $.ajax({
-    url: requestURL + userInput.val() + "&appid=" + apikey,
+    url: weeklyUrl + city + "&appid=" + apiKey,
     method: "GET",
   }).then(function (data) {
     console.log(data);
+    for (let i = 0; i < 5; i++) {
+      var date = 
+      // var card = `
+      // <div class="card">
+      //      <img src="..." class="card-img-top" alt="...">
+      //      <div class="card-body">
+      //        <h5 class="card-title">${}</h5>
+      //        <p class="card-text">.</p>
+      //        <p class="card-text">.</p>
+      //        <p class="card-text">.</p>
+      //      </div>
+      //   </div>
+      
+      // `
+    }
   });
 }
-
+upcomingWeather();
 // Card Template
-//      <div class="card">
-//           <img src="..." class="card-img-top" alt="...">
-//           <div class="card-body">
-//             <h5 class="card-title">Card title</h5>
-//             <p class="card-text">.</p>
-//             <p class="card-text">.</p>
-//             <p class="card-text">.</p>
-//           </div>
-//        </div>
 
 //use the .empty method to clear out the cards
