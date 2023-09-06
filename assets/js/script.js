@@ -71,8 +71,12 @@ function upcomingWeather(city) {
         return;
       }
 
-      var card = $('<div class="card">');
-      var forecastIcon = $('<img class ="card-img-top" alt="weather icon">');
+      var card = $(
+        '<div class="card d-flex align-items-center justify-content-around " >'
+      );
+      var forecastIcon = $(
+        '<img class ="card-img-top col-md-4 rounded mx-auto d-block" alt="weather icon">'
+      );
       var cardBody = $('<div class="card-body">');
       var date = $('<h5 class="card-title">');
       var forecastTemp = $('<p class="card-text">');

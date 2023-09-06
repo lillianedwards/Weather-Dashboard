@@ -23,6 +23,33 @@
 }
 
 #today-weather-icon {
-  width: 50%;
-  height: 90%;
+  width: 40%;
+  background-color: var(--lapis);
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.21);
+  border-width: thick;
+  border-radius: 20px;
+}
+#forecast-contain {
+  box-shadow: 0 0 30px var(--airSuperiorityBlue);
+  border-radius: 20px;
+}
+
+.card-img-top {
+  background-color: var(--lapis);
+  border-radius: 20px;
+  width: 40%;
+}
+.card-body {
+  border-radius: 20px;
+  background-color: var(--lightBlue);
+  transform: scale(2px);
+}
+.card:hover {
+  box-shadow: var(--liver);
+  border-color: var(--black);
+  transition: 0.3s;
+  transform: scale(2px);
 }
