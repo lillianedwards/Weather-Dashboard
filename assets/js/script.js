@@ -5,7 +5,7 @@ var citySearchBtn = $("#search-button");
 var cityDropdownEl = $("#city-dropdown");
 
 var todayWeatherCityName = $("#today-weather-city-name");
-var todayWeatherIcon = $("today-weather-icon");
+var todayWeatherIcon = $("#today-weather-icon");
 var todayWeatherTemp = $("#today-weather-temp");
 var todayWeatherWind = $("#today-weather-wind");
 var todayWeatherHumid = $("#today-weather-humidity");
@@ -43,6 +43,7 @@ function currentWeather(city) {
     var temp = data.main.temp;
     var wind = data.wind.speed;
     var humidity = data.main.humidity;
+    var cWIcon = $("#cWeatherIcon");
 
     //appending the current city here for daily
 
@@ -50,6 +51,11 @@ function currentWeather(city) {
     todayWeatherTemp.text(temp);
     todayWeatherWind.text(wind);
     todayWeatherHumid.text(humidity);
+    todayWeatherIcon.attr(
+      "src",
+      "https://openweathermap.org/img/wn/" + icon + ".png"
+    );
+    
   });
 }
 
@@ -85,7 +91,7 @@ function upcomingWeather(city) {
     });
   });
 }
-upcomingWeather("Duluth");
+upcomingWeather("");
 // Card Template
 
 //use the .empty method to clear out the cards
