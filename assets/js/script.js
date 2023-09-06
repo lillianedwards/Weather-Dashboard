@@ -49,7 +49,7 @@ function currentWeather(city) {
     todayWeatherCityName.text("City = " + name);
     todayWeatherTemp.text("Tempature = " + temp + "°");
     todayWeatherWind.text("Is it windy today? = " + wind + "MPH");
-    todayWeatherHumid.text("Humidty = " + humidity);
+    todayWeatherHumid.text("Humidty = " + humidity + "%");
     todayWeatherIcon.attr(
       "src",
       "https://openweathermap.org/img/wn/" + icon + ".png"
@@ -95,8 +95,6 @@ function upcomingWeather(city) {
       cardBody.append(forecastWind);
       forecastHumid.text("Humidity: " + value.main.humidity + "%");
       cardBody.append(forecastHumid);
-
-      
     });
   });
 }
