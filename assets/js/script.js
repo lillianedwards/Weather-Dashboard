@@ -76,6 +76,9 @@ function upcomingWeather(city) {
       forecastContainer.append(card);
       forecastIcon.attr("src","https://openweathermap.org/img/wn/" + iconName + ".png")
       card.append(forecastIcon);
+      card.append(cardBody);
+      date.text(value.dt_text);
+      
 
     })
   });
