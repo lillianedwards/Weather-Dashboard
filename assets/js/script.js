@@ -43,7 +43,6 @@ function currentWeather(city) {
     var temp = data.main.temp;
     var wind = data.wind.speed;
     var humidity = data.main.humidity;
-    var cWIcon = $("#cWeatherIcon");
 
     //appending the current city here for daily
 
@@ -91,7 +90,7 @@ function upcomingWeather(city) {
     });
   });
 }
-upcomingWeather("");
+// upcomingWeather("");
 // Card Template
 
 //use the .empty method to clear out the cards
@@ -123,6 +122,6 @@ function stringToProperCase(string) {
     value = value.charAt(0).toUpperCase() + value.substring(1);
     result += value + " ";
   });
-  console.log(result);
+  // console.log(result);
   return result.trim();
 }
