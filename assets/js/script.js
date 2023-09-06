@@ -106,3 +106,15 @@ function handleSavedCitySelect(event) {
   currentWeather(city);
   //upcomingWeather(city);
 }
+
+function stringToProperCase(string) {
+  let words = string.split(" ");
+  let result = "";
+  words.forEach((value) => {
+    value = value.toLowerCase();
+    value = value.charAt(0).toUpperCase() + value.substring(1);
+    result += value + " ";
+  });
+  console.log(result);
+  return result.trim();
+}
