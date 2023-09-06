@@ -2,6 +2,7 @@
 var citySearchBox = $("#city-search");
 var userInput = $("#user-City");
 var citySearchBtn = $("#search-button");
+var cityDropdownEl = $("#city-dropdown");
 
 var todayWeatherCityName = $("#today-weather-city-name");
 var todayWeatherIcon = $("today-weather-icon");
@@ -12,7 +13,9 @@ var todayWeatherHumid = $("#today-weather-humidity");
 var apiKey = "fd14e40bfd6c1460a77a88f01383cf1e";
 var dailyURL =
   "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
-var weeklyUrl;
+var weeklyUrl =
+  "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=";
+let savedCities = JSON.parse(localStorage.getItem("savedCities")) || [];
 
 function getCurrentWeather(event) {
   event.preventDefault();
@@ -30,7 +33,6 @@ function currentWeather(city) {
     var temp = data.main.temp;
     var wind = data.wind.speed;
     var humidity = data.main.humidity;
-
 
     //appending the current city here for daily
 
@@ -64,3 +66,18 @@ function upcomingWeather(city) {
 //        </div>
 
 //use the .empty method to clear out the cards
+
+savedCities.forEach((value) => {
+  const cityItemEl = $("<li>");
+  const cityLinkEl = $('<a class="dropdown-item" href="#">');
+  cityLinkEl.text(value);
+  cityLinkEl.on("click", handleSavedCitySelect);
+  cityItemEl.append(cityLinkEl);
+  cityDropdownEl.append(cityItemEl);
+});
+
+function handleSavedCitySelect(event) {
+  let city = $(event.target).text();
+  currentWeather(city);
+  //upcomingWeather(city);
+}
