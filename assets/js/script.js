@@ -40,7 +40,6 @@ function currentWeather(city) {
     todayWeatherTemp.text(temp);
     todayWeatherWind.text(wind);
     todayWeatherHumid.text(humidity);
-    //appending the current city here for daily
   });
 }
 
