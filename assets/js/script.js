@@ -22,13 +22,14 @@ renderCityMenu();
 
 function getCurrentWeather(event) {
   event.preventDefault();
-  if (!savedCities.includes(userInput.val())) {
-    savedCities.push(userInput.val());
+  let city = stringToProperCase(userInput.val());
+  if (!savedCities.includes(city)) {
+    savedCities.push(city);
   }
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
   renderCityMenu();
-  currentWeather(userInput.val());
-  upcomingWeather(userInput.val());
+  currentWeather(city);
+  upcomingWeather(city);
 }
 
 function currentWeather(city) {
@@ -92,6 +93,7 @@ upcomingWeather("Duluth");
 function renderCityMenu() {
   cityDropdownEl.empty();
   savedCities.forEach((value) => {
+    value = stringToProperCase(value);
     const cityItemEl = $("<li>");
     const cityLinkEl = $('<a class="dropdown-item" href="#">');
     cityLinkEl.text(value);
