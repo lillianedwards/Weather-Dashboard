@@ -108,9 +108,15 @@ function renderCityMenu() {
   savedCities.forEach((value) => {
     value = stringToProperCase(value);
     const cityItemEl = $("<li>");
-    const cityLinkEl = $('<a class="dropdown-item" href="#">');
+    const cityLinkEl = $(
+      '<a class="dropdown-item d-flex justify-content-between" href="#">'
+    );
+    const cityRemoveBtn = $('<button class="btn btn-danger">');
+    cityRemoveBtn.text("X");
+    cityRemoveBtn.on("click", handleRemoveSavedCity);
     cityLinkEl.text(value);
     cityLinkEl.on("click", handleSavedCitySelect);
+    cityLinkEl.append(cityRemoveBtn);
     cityItemEl.append(cityLinkEl);
     cityDropdownEl.append(cityItemEl);
   });
@@ -132,4 +138,15 @@ function stringToProperCase(string) {
   });
   // console.log(result);
   return result.trim();
+}
+
+function handleRemoveSavedCity(event) {
+  let selectItem = $(event.target);
+  let city = selectItem.parent().text();
+  console.log(city);
+  console.log(savedCities);
+  savedCities = savedCities.filter((item) => !city.includes(item));
+  console.log(savedCities);
+  localStorage.setItem("savedCities", JSON.stringify(savedCities));
+  renderCityMenu();
 }
