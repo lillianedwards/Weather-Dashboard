@@ -55,7 +55,7 @@ function currentWeather(city) {
       "src",
       "https://openweathermap.org/img/wn/" + icon + ".png"
     );
-    
+    cWIcon.append(todayWeatherIcon);
   });
 }
 
