@@ -17,8 +17,13 @@ var weeklyUrl =
   "https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=";
 let savedCities = JSON.parse(localStorage.getItem("savedCities")) || [];
 
+renderCityMenu();
+
 function getCurrentWeather(event) {
   event.preventDefault();
+  savedCities.push(userInput.val());
+  localStorage.setItem("savedCities", JSON.stringify(savedCities));
+  renderCityMenu();
   currentWeather(userInput.val());
 }
 
@@ -67,14 +72,17 @@ function upcomingWeather(city) {
 
 //use the .empty method to clear out the cards
 
-savedCities.forEach((value) => {
-  const cityItemEl = $("<li>");
-  const cityLinkEl = $('<a class="dropdown-item" href="#">');
-  cityLinkEl.text(value);
-  cityLinkEl.on("click", handleSavedCitySelect);
-  cityItemEl.append(cityLinkEl);
-  cityDropdownEl.append(cityItemEl);
-});
+function renderCityMenu() {
+  cityDropdownEl.empty();
+  savedCities.forEach((value) => {
+    const cityItemEl = $("<li>");
+    const cityLinkEl = $('<a class="dropdown-item" href="#">');
+    cityLinkEl.text(value);
+    cityLinkEl.on("click", handleSavedCitySelect);
+    cityItemEl.append(cityLinkEl);
+    cityDropdownEl.append(cityItemEl);
+  });
+}
 
 function handleSavedCitySelect(event) {
   let city = $(event.target).text();
