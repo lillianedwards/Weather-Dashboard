@@ -9,6 +9,8 @@ var todayWeatherIcon = $("today-weather-icon");
 var todayWeatherTemp = $("#today-weather-temp");
 var todayWeatherWind = $("#today-weather-wind");
 var todayWeatherHumid = $("#today-weather-humidity");
+var forecastContainer = $("#forecast-contain");
+
 
 var apiKey = "fd14e40bfd6c1460a77a88f01383cf1e";
 var dailyURL =
@@ -25,6 +27,7 @@ function getCurrentWeather(event) {
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
   renderCityMenu();
   currentWeather(userInput.val());
+  upcomingWeather(userInput.val());
 }
 
 function currentWeather(city) {
@@ -52,23 +55,33 @@ citySearchBtn.on("click", getCurrentWeather);
 
 function upcomingWeather(city) {
   $.ajax({
-    url: requestURL + userInput.val() + "&appid=" + apikey,
+    url: weeklyUrl + city + "&appid=" + apiKey,
     method: "GET",
   }).then(function (data) {
     console.log(data);
+    data.list.forEach ((value) => {
+      if (!value.dt_txt.includes("15:00:00")) {
+        return;
+      }
+
+      var card = $('<div class="card">');
+      var forecastIcon = $('<img class ="card-img-top" alt="weather icon">');
+      var cardBody = $('<div class="card-body">')
+      var date = $('<h5 class="card-title">')
+      var forecastTemp = $('<p class="card-text">');
+      var forecastWind = $('<p class="card-text">');
+      var forecastHumid = $('<p class="card-text">');
+      var iconName = value.weather[0].icon;
+      
+      forecastContainer.append(card);
+      forecastIcon.attr("src","https://openweathermap.org/img/wn/" + iconName + ".png")
+      card.append(forecastIcon);
+
+    })
   });
 }
-
+upcomingWeather("Duluth");
 // Card Template
-//      <div class="card">
-//           <img src="..." class="card-img-top" alt="...">
-//           <div class="card-body">
-//             <h5 class="card-title">Card title</h5>
-//             <p class="card-text">.</p>
-//             <p class="card-text">.</p>
-//             <p class="card-text">.</p>
-//           </div>
-//        </div>
 
 //use the .empty method to clear out the cards
 
