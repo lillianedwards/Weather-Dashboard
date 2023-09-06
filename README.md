@@ -20,5 +20,23 @@ _____________________________________________
 
 ## Access 🔗
 
-To access the weather dashboard , simply click on the GitHub Pages link in the repo description or follow the link 
+To access the weather dashboard , simply click on the GitHub Pages link in the repo description or follow the link: [Weather Dashboard 🌡️](lillianedwards.github.io/Weather-Dashboard)
+
+## Installation 💻
+
+For users new to GitHub, follow the git cline process to copy the code into your local repository.
+
+## Usage 📸
+
+[Alt text](./assets/images/WeatherDashboard.png)
+
+## Credit 🧑‍🤝‍🧑
+
+This project was created cooperatively between Project 1 team members: Jordan Adams, Lillian Edwards, Josh Kellogg, Steven Rodriguez.
+
+## License 🪪
+
+This project is not licensed. 
+
+
 
