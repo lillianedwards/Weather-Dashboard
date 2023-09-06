@@ -5,7 +5,7 @@ var citySearchBtn = $("#search-button");
 var cityDropdownEl = $("#city-dropdown");
 
 var todayWeatherCityName = $("#today-weather-city-name");
-var todayWeatherIcon = $("today-weather-icon");
+var todayWeatherIcon = $("#today-weather-icon");
 var todayWeatherTemp = $("#today-weather-temp");
 var todayWeatherWind = $("#today-weather-wind");
 var todayWeatherHumid = $("#today-weather-humidity");
@@ -85,7 +85,7 @@ function upcomingWeather(city) {
     });
   });
 }
-upcomingWeather("Denver");
+// upcomingWeather("");
 // Card Template
 
 //use the .empty method to clear out the cards
