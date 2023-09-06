@@ -94,6 +94,8 @@ function upcomingWeather(city) {
       cardBody.append(forecastTemp);
       forecastWind.text("Wind Speed: " + value.wind.speed);
       cardBody.append(forecastWind);
+      forecastHumid.text("Humidity: " + value.main.humidity + "%");
+      cardBody.append(forecastHumid);
 
       
     });
