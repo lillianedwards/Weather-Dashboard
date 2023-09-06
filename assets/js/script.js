@@ -22,11 +22,14 @@ renderCityMenu();
 
 function getCurrentWeather(event) {
   event.preventDefault();
-  savedCities.push(userInput.val());
+  let city = stringToProperCase(userInput.val());
+  if (!savedCities.includes(city)) {
+    savedCities.push(city);
+  }
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
   renderCityMenu();
-  currentWeather(userInput.val());
-  upcomingWeather(userInput.val());
+  currentWeather(city);
+  upcomingWeather(city);
 }
 
 function currentWeather(city) {
@@ -90,6 +93,7 @@ upcomingWeather("Duluth");
 function renderCityMenu() {
   cityDropdownEl.empty();
   savedCities.forEach((value) => {
+    value = stringToProperCase(value);
     const cityItemEl = $("<li>");
     const cityLinkEl = $('<a class="dropdown-item" href="#">');
     cityLinkEl.text(value);
@@ -103,4 +107,16 @@ function handleSavedCitySelect(event) {
   let city = $(event.target).text();
   currentWeather(city);
   //upcomingWeather(city);
+}
+
+function stringToProperCase(string) {
+  let words = string.split(" ");
+  let result = "";
+  words.forEach((value) => {
+    value = value.toLowerCase();
+    value = value.charAt(0).toUpperCase() + value.substring(1);
+    result += value + " ";
+  });
+  console.log(result);
+  return result.trim();
 }
