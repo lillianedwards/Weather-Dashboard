@@ -112,7 +112,7 @@ function renderCityMenu() {
       '<a class="dropdown-item d-flex justify-content-between" href="#">'
     );
     const cityRemoveBtn = $('<button class="btn btn-danger">');
-    cityRemoveBtn.text("X");
+    // cityRemoveBtn.text("X");
     cityRemoveBtn.on("click", handleRemoveSavedCity);
     cityLinkEl.text(value);
     cityLinkEl.on("click", handleSavedCitySelect);
@@ -125,7 +125,7 @@ function renderCityMenu() {
 function handleSavedCitySelect(event) {
   let city = $(event.target).text();
   currentWeather(city);
-  //upcomingWeather(city);
+  upcomingWeather(city);
 }
 
 function stringToProperCase(string) {
