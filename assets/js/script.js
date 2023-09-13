@@ -29,7 +29,7 @@ function getCurrentWeather(event) {
   localStorage.setItem("savedCities", JSON.stringify(savedCities));
   renderCityMenu();
   currentWeather(city);
-  upcomingWeather(city);
+  // upcomingWeather(city);
 }
 
 function currentWeather(city) {
@@ -125,7 +125,7 @@ function renderCityMenu() {
 function handleSavedCitySelect(event) {
   let city = $(event.target).text();
   currentWeather(city);
-  //upcomingWeather(city);
+  // upcomingWeather(city);
 }
 
 function stringToProperCase(string) {
